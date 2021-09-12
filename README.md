@@ -21,4 +21,6 @@ go run main.go
 
 ## To publish image to Github Packages container registry
 
+Create a new release via Github using a `vx.x.x` version pattern. Match `golang` image major and minor version and bump patch for any new releases that doesn't change `golang` image.
+
 The docker image is build and push automatically to Github Packages (ghcr.io) when a version tag (`v*`) is created on the `main` branch. The git version tag is used for the docker image version tag.
