@@ -1,0 +1,29 @@
+{
+  "name": "Go",
+  // "image": "simplestruct/vscode-remote-devcontainer.go:latest",
+  // uncomment to build the devcontainer image locally
+  "build": {
+    "dockerfile": "../Dockerfile",
+  },
+  "settings": { 
+		"terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/bin/zsh",
+      },
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "go.gopath": "/go",
+		"go.useLanguageServer": true
+  },
+  "extensions": [
+    "editorconfig.editorconfig",
+		"golang.Go",
+  ],
+  "runArgs": [
+    // security and capability needed for ptrace-based debugger for golang
+    // https://code.visualstudio.com/docs/remote/create-dev-container#_set-up-a-folder-to-run-in-a-container
+    "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined",
+  ],
+  "forwardPorts": [],
+  "postCreateCommand": "go version",
+}
