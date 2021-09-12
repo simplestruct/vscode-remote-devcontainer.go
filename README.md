@@ -21,4 +21,4 @@ go run main.go
 
 ## To publish image to Github Packages container registry
 
-TODO
+The docker image is build and push automatically to Github Packages (ghcr.io) when a version tag (`v*`) is created on the `main` branch. The git version tag is used for the docker image version tag.
