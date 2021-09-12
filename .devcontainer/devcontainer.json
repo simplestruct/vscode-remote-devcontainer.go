@@ -1,10 +1,10 @@
 {
   "name": "Go",
-  // "image": "simplestruct/vscode-remote-devcontainer.go:latest",
+  "image": "simplestruct/vscode-remote-devcontainer.go:latest",
   // uncomment to build the devcontainer image locally
-  "build": {
-    "dockerfile": "../Dockerfile",
-  },
+  // "build": {
+  //   "dockerfile": "../Dockerfile",
+  // },
   "settings": { 
 		"terminal.integrated.profiles.linux": {
       "zsh": {
