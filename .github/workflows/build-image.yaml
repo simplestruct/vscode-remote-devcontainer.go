@@ -38,10 +38,17 @@ jobs:
       - name: Notify via Slack
         # v1.15.0
         # https://github.com/slackapi/slack-github-action/commit/d5d276d7ae0f38f29322b80da9baf985cc80f8b1
-        uses: slackapi/slack-github-action@d5d276d7ae0f38f29322b80da9baf985cc80f8b1
-        with:
-          # channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          channel-id: github
-          slack-message: 'Test message. Tags `${{ steps.meta.outputs.tags }}`'
+        # uses: slackapi/slack-github-action@d5d276d7ae0f38f29322b80da9baf985cc80f8b1
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL: github
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: Test message. Tags `${{ steps.meta.outputs.tags }}`
+          SLACK_TITLE: Test title
+          SLACK_USERNAME: github-bot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        # with:
+        #   channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+        #   slack-message: 'Test message. Tags `${{ steps.meta.outputs.tags }}`'
+        # env:
+        #   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
