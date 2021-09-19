@@ -2,7 +2,7 @@ name: Build docker image
 
 on:
   push:
-    paths: [Dockerfile]
+    # paths: [Dockerfile]
 
 jobs:
   build-image:
@@ -28,9 +28,19 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Notify via Slack
+        # v1.15.0
+        # https://github.com/slackapi/slack-github-action/commit/d5d276d7ae0f38f29322b80da9baf985cc80f8b1
+        uses: slackapi/slack-github-action@d5d276d7ae0f38f29322b80da9baf985cc80f8b1
         with:
-          context: .
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: Test message. Tags `${{ steps.meta.outputs.tags }}`
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
