@@ -1,5 +1,7 @@
 # vscode-remote-devcontainer.go
 
+![example workflow](https://github.com/simplestruct/vscode-remote-devcontainer.go/actions/workflows/publish-image.yaml/badge.svg)
+
 This project uses Visual Studio Code Remote Containers extension to run the development environment in Docker container.
 
 ## Requirement
