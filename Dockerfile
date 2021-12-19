@@ -23,4 +23,4 @@ RUN go get \
     github.com/ramya-rao-a/go-outline@latest
 
 # gopls updates very frequently separate for faster build
-RUN go get golang.org/x/tools/gopls@v0.7.3
+RUN go get golang.org/x/tools/gopls@v0.7.4
